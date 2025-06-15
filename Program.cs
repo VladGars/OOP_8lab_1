@@ -12,7 +12,7 @@ public class FileSystemManager
         try
         {
             Directory.CreateDirectory(rootPath);
-            Console.WriteLine($"✅ 1. Створено каталог: {rootPath}");
+            Console.WriteLine($" 1. Створено каталог: {rootPath}");
 
             string groupPath = Path.Combine(rootPath, groupNumber);
             string lastNamePath = Path.Combine(rootPath, lastName);
@@ -25,12 +25,12 @@ public class FileSystemManager
             Directory.CreateDirectory(sourcesPath);
             Directory.CreateDirectory(reportsPath);
             Directory.CreateDirectory(textsPath);
-            Console.WriteLine("✅ 2. Створено каталоги: Group, LastName, Sources, Reports, Texts.");
+            Console.WriteLine(" 2. Створено каталоги: Group, LastName, Sources, Reports, Texts.");
 
             CopyDirectory(textsPath, Path.Combine(lastNamePath, "Texts"));
             CopyDirectory(sourcesPath, Path.Combine(lastNamePath, "Sources"));
             CopyDirectory(reportsPath, Path.Combine(lastNamePath, "Reports"));
-            Console.WriteLine($"✅ 3. Каталоги Texts, Sources, Reports скопійовано до {lastNamePath}");
+            Console.WriteLine($" 3. Каталоги Texts, Sources, Reports скопійовано до {lastNamePath}");
 
             string newLastNamePath = Path.Combine(groupPath, lastName);
             if (Directory.Exists(newLastNamePath))
@@ -38,7 +38,7 @@ public class FileSystemManager
                 Directory.Delete(newLastNamePath, true);
             }
             Directory.Move(lastNamePath, newLastNamePath);
-            Console.WriteLine($"✅ 4. Каталог {lastNamePath} переміщено до {groupPath}");
+            Console.WriteLine($" 4. Каталог {lastNamePath} переміщено до {groupPath}");
 
             string dirInfoFilePath = Path.Combine(textsPath, "dirinfo.txt");
 
@@ -63,13 +63,13 @@ public class FileSystemManager
                     writer.WriteLine(subDir.Name);
                 }
             }
-            Console.WriteLine($"✅ 5. Файл {dirInfoFilePath} створено та заповнено інформацією.");
+            Console.WriteLine($" 5. Файл {dirInfoFilePath} створено та заповнено інформацією.");
 
-            Console.WriteLine("\n🎉 Усі операції успішно виконано!");
+            Console.WriteLine("\n Усі операції успішно виконано!");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"❌ Сталася помилка: {ex.Message}");
+            Console.WriteLine($" Сталася помилка: {ex.Message}");
         }
     }
 
